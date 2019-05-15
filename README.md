@@ -1,2 +1,1 @@
-# type-tester
 Type tester
