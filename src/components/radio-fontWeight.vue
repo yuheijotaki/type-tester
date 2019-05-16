@@ -8,7 +8,7 @@
         v-model="fontWeight"
         @input="updateValue"
       >
-      <label for="fontWeight01">Normal</label>
+      <label for="fontWeight01">normal</label>
       <input
         type="radio"
         id="fontWeight02"
@@ -16,7 +16,7 @@
         v-model="fontWeight"
         @input="updateValue"
       >
-      <label for="fontWeight02">Bold</label>
+      <label for="fontWeight02">bold</label>
   </div>
 </template>
 

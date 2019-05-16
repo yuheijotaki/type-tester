@@ -7,6 +7,7 @@
         <inputLineHeight @change="changeLineHeight"></inputLineHeight>
         <inputLetterSpacing @change="changeLetterSpacing"></inputLetterSpacing>
         <radioFontWeight @change="changeFontWeight"></radioFontWeight>
+        <radioTextAlign @change="changeTextAlign"></radioTextAlign>
         <inputCustomStyle @change="changeCustomStyle"></inputCustomStyle>
       </div>
       <div class="container">
@@ -25,6 +26,7 @@ import inputFontSize from './components/input-fontSize'
 import inputLineHeight from './components/input-lineHeight'
 import inputLetterSpacing from './components/input-letterSpacing'
 import radioFontWeight from './components/radio-fontWeight'
+import radioTextAlign from './components/radio-textAlign'
 import inputCustomStyle from './components/input-customStyle'
 import "normalize.css";
 
@@ -36,6 +38,7 @@ export default {
     inputLineHeight,
     inputLetterSpacing,
     radioFontWeight,
+    radioTextAlign,
     inputCustomStyle
   },
   data() {
@@ -47,7 +50,8 @@ export default {
         fontSize: '16px',
         lineHeight: '1.7',
         letterSpacing: '0em',
-        fontWeight: 'normal'
+        fontWeight: 'normal',
+        textAlign: 'left'
       }
     }
   },
@@ -66,6 +70,9 @@ export default {
     },
     changeFontWeight: function (weight) {
       this.styleObject.fontWeight = weight;
+    },
+    changeTextAlign: function (align) {
+      this.styleObject.textAlign = align;
     },
     changeCustomStyle: function (sytle) {
       this.customStyle = sytle;
