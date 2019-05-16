@@ -67,6 +67,6 @@ h1,h2,h3,h4,h5,h6 {
   padding: 20px;
 }
 .container__block {
-  // white-space: pre;
+  white-space: pre-line;
 }
 </style>
