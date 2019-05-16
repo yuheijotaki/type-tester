@@ -5,6 +5,7 @@
         <inputText @change="changeText"></inputText>
         <inputFontSize @change="changeFontSize"></inputFontSize>
         <inputLineHeight @change="changeLineHeight"></inputLineHeight>
+        <inputLetterSpacing @change="changeLetterSpacing"></inputLetterSpacing>
         <inputCustomStyle @change="changeCustomStyle"></inputCustomStyle>
       </div>
       <div class="container">
@@ -21,6 +22,7 @@ styleObject: {{styleObject}}
 import inputText from './components/input-text'
 import inputFontSize from './components/input-fontSize'
 import inputLineHeight from './components/input-lineHeight'
+import inputLetterSpacing from './components/input-letterSpacing'
 import inputCustomStyle from './components/input-customStyle'
 import "normalize.css";
 
@@ -30,6 +32,7 @@ export default {
     inputText,
     inputFontSize,
     inputLineHeight,
+    inputLetterSpacing,
     inputCustomStyle
   },
   data() {
@@ -39,7 +42,8 @@ export default {
       styleObject: {
         color: '#111',
         fontSize: '16px',
-        lineHeight: '1.7'
+        lineHeight: '1.7',
+        letterSpacing: '0em'
       }
     }
   },
@@ -52,6 +56,9 @@ export default {
     },
     changeLineHeight: function (height) {
       this.styleObject.lineHeight = height;
+    },
+    changeLetterSpacing: function (space) {
+      this.styleObject.letterSpacing = `${space}em`;
     },
     changeCustomStyle: function (sytle) {
       this.customStyle = sytle;
@@ -72,10 +79,10 @@ h1,h2,h3,h4,h5,h6 {
 #app {
   font-family: Helvetica Neue, Helvetica, Arial, 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
   -webkit-text-size-adjust: 100%;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  font-feature-settings : "palt";
+  // -webkit-font-smoothing: antialiased;
+  // -moz-osx-font-smoothing: grayscale;
+  // text-rendering: optimizeLegibility;
+  // font-feature-settings : "palt";
 }
 .wrapper {
   display: flex;
@@ -83,13 +90,13 @@ h1,h2,h3,h4,h5,h6 {
 .tools {
   box-sizing: border-box;
   background: #eee;
-  width: 40%;
+  width: 30%;
   min-height: 100vh;
   padding: 20px;
 }
 .container {
   box-sizing: border-box;
-  width: 60%;
+  width: 70%;
   min-height: 100vh;
   padding: 20px;
   pre {
@@ -102,6 +109,6 @@ h1,h2,h3,h4,h5,h6 {
 }
 .container__block {
   white-space: pre-line;
-  animation: all 1s linear;
+  animation: all 10s linear;
 }
 </style>

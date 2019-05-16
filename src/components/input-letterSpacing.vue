@@ -1,34 +1,34 @@
 <template>
   <div>
-    lineHeight: <input
+    letterSpacing: <input
       type="range"
-      min="1"
-      max="3"
-      step="0.1"
-      v-model="lineHeight"
+      min="0"
+      max="1"
+      step="0.01"
+      v-model="letterSpacing"
       @input="updateValue"
       @focus="$emit('focus', $event)"
       @blur="$emit('blur', $event)"
     >
     <input
       type="number"
-      min="1"
-      max="3"
-      step="0.1"
-      v-model="lineHeight"
+      min="0"
+      max="1"
+      step="0.01"
+      v-model="letterSpacing"
       @input="updateValue"
       @focus="$emit('focus', $event)"
       @blur="$emit('blur', $event)"
-    >
+    > em
   </div>
 </template>
 
 <script>
 export default {
-  name: 'inputLineHeight',
+  name: 'inputLetterSpacing',
   data() {
     return {
-      lineHeight: 1.7,
+      letterSpacing: '0'
     }
   },
   methods: {
