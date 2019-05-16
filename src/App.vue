@@ -54,14 +54,14 @@ export default {
 私はその人を常に先生と呼んでいた。だからここでもただ先生と書くだけで本名は打ち明けない。これは世間を憚かる遠慮というよりも、その方が私にとって自然だからである。私はその人の記憶を呼び起すごとに、すぐ「先生」といいたくなる。筆を執っても心持は同じ事である。よそよそしい頭文字などはとても使う気にならない。`,
       customStyle: 'color: red;',
       styleObject: {
-        fontFamily: 'sans-serif',
-        color: '#111',
-        fontSize: '16px',
-        lineHeight: '1.7',
-        letterSpacing: '0em',
-        fontWeight: 'normal',
-        textAlign: 'left',
-        fontSmoothing: 'subpixel-antialiased'
+        'font-family': 'sans-serif',
+        'color': '#111',
+        'font-size': '16px',
+        'line-height': '1.7',
+        'letter-spacing': '0em',
+        'font-weight': 'normal',
+        'text-align': 'left',
+        '-webkit-font-smoothing': 'subpixel-antialiased'
       }
     }
   },
@@ -70,27 +70,27 @@ export default {
       this.message = message;
     },
     changeFontFamily: function (familyJa) {
-      this.styleObject.fontFamily = familyJa;
+      this.styleObject['font-family'] = familyJa;
       // CSSの値用に 欧文 -> 和文 の順に並べる
       const familyJoin = '[WIPWIPWIPWIPWIP]';
     },
     changeFontSize: function (size) {
-      this.styleObject.fontSize = `${size}px`;
+      this.styleObject['font-size'] = `${size}px`;
     },
     changeLineHeight: function (height) {
-      this.styleObject.lineHeight = height;
+      this.styleObject['line-height'] = height;
     },
     changeLetterSpacing: function (space) {
-      this.styleObject.letterSpacing = `${space}em`;
+      this.styleObject['letter-spacing'] = `${space}em`;
     },
     changeFontWeight: function (weight) {
-      this.styleObject.fontWeight = weight;
+      this.styleObject['font-weight'] = weight;
     },
     changeTextAlign: function (align) {
-      this.styleObject.textAlign = align;
+      this.styleObject['text-align'] = align;
     },
     changeFontSmoothing: function (smooth) {
-      this.styleObject.fontSmoothing = smooth;
+      this.styleObject['-webkit-font-smoothing'] = smooth;
     },
     changeCustomStyle: function (sytle) {
       this.customStyle = sytle;
