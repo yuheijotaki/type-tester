@@ -1,9 +1,19 @@
 <template>
   <div>
     FontSize: <input
+      type="range"
+      min="10"
+      max="200"
+      v-model="fontSize"
+      @input="updateValue"
+      @focus="$emit('focus', $event)"
+      @blur="$emit('blur', $event)"
+    >
+    <input
       type="number"
       min="10"
-      :value="fontSize"
+      max="200"
+      v-model="fontSize"
       @input="updateValue"
       @focus="$emit('focus', $event)"
       @blur="$emit('blur', $event)"
