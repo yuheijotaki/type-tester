@@ -1,21 +1,22 @@
 <template>
   <div>
-    CustomStyle: <input
-      type="text"
-      :value="customStyle"
+    FontSize: <input
+      type="number"
+      min="10"
+      :value="fontSize"
       @input="updateValue"
       @focus="$emit('focus', $event)"
       @blur="$emit('blur', $event)"
-    >
+    > px
   </div>
 </template>
 
 <script>
 export default {
-  name: 'inputCustomStyle',
+  name: 'inputFontSize',
   data() {
     return {
-      customStyle: 'color: red;'
+      fontSize: 16,
     }
   },
   methods: {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <textarea
+    Text: <textarea
       :value="message"
       @input="updateValue"
       @focus="$emit('focus', $event)"
