@@ -1,32 +1,34 @@
 <template>
   <div>
-    FontSize: <input
+    lineHeight: <input
       type="range"
-      min="10"
-      max="100"
-      v-model="fontSize"
+      min="1.0"
+      max="3.0"
+      step="0.1"
+      v-model="lineHeight"
       @input="updateValue"
       @focus="$emit('focus', $event)"
       @blur="$emit('blur', $event)"
     >
     <input
       type="number"
-      min="10"
-      max="100"
-      v-model="fontSize"
+      min="1.0"
+      max="3.0"
+      step="0.1"
+      v-model="lineHeight"
       @input="updateValue"
       @focus="$emit('focus', $event)"
       @blur="$emit('blur', $event)"
-    > px
+    >
   </div>
 </template>
 
 <script>
 export default {
-  name: 'inputFontSize',
+  name: 'inputLineHeight',
   data() {
     return {
-      fontSize: 16,
+      lineHeight: 1.7,
     }
   },
   methods: {
