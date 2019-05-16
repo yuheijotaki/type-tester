@@ -3,9 +3,11 @@
     <div class="wrapper">
       <div class="tools">
         <inputText @change="changeText"></inputText>
+        <inputCustomStyle @change="changeCustomStyle"></inputCustomStyle>
       </div>
       <div class="container">
-        <div class="container__block">{{message}}</div>
+        {{customStyle}}
+        <div class="container__block" :style="customStyle">{{message}}</div>
       </div>
     </div>
   </div>
@@ -13,21 +15,28 @@
 
 <script>
 import inputText from './components/input-text'
+import inputCustomStyle from './components/input-customStyle'
 import "normalize.css";
 
 export default {
   name: 'App',
   components: {
-    inputText
+    inputText,
+    inputCustomStyle
   },
   data() {
     return {
-      message: "私はその人を常に先生と呼んでいた。だからここでもただ先生と書くだけで本名は打ち明けない。これは世間を憚かる遠慮というよりも、その方が私にとって自然だからである。私はその人の記憶を呼び起すごとに、すぐ「先生」といいたくなる。筆を執っても心持は同じ事である。よそよそしい頭文字などはとても使う気にならない。",
+      message: '私はその人を常に先生と呼んでいた。だからここでもただ先生と書くだけで本名は打ち明けない。これは世間を憚かる遠慮というよりも、その方が私にとって自然だからである。私はその人の記憶を呼び起すごとに、すぐ「先生」といいたくなる。筆を執っても心持は同じ事である。よそよそしい頭文字などはとても使う気にならない。',
+      customStyle: 'color: red;'
     }
   },
   methods: {
     changeText: function (message) {
       this.message = message;
+    },
+    changeCustomStyle: function (sytle) {
+      console.log(sytle);
+      this.customStyle = sytle;
     }
   }
 }
