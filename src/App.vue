@@ -3,6 +3,7 @@
     <div class="wrapper">
       <div class="tools">
         <div><inputText @change="changeText"></inputText></div>
+        <div><radioFontFamilyJa @change="changeFontFamily"></radioFontFamilyJa></div>
         <div><inputFontSize @change="changeFontSize"></inputFontSize></div>
         <div><inputLineHeight @change="changeLineHeight"></inputLineHeight></div>
         <div><inputLetterSpacing @change="changeLetterSpacing"></inputLetterSpacing></div>
@@ -23,6 +24,7 @@ styleObject: {{styleObject}}
 
 <script>
 import inputText from './components/input-text'
+import radioFontFamilyJa from './components/radio-fontFamilyJa'
 import inputFontSize from './components/input-fontSize'
 import inputLineHeight from './components/input-lineHeight'
 import inputLetterSpacing from './components/input-letterSpacing'
@@ -36,6 +38,7 @@ export default {
   name: 'App',
   components: {
     inputText,
+    radioFontFamilyJa,
     inputFontSize,
     inputLineHeight,
     inputLetterSpacing,
@@ -51,6 +54,7 @@ export default {
 私はその人を常に先生と呼んでいた。だからここでもただ先生と書くだけで本名は打ち明けない。これは世間を憚かる遠慮というよりも、その方が私にとって自然だからである。私はその人の記憶を呼び起すごとに、すぐ「先生」といいたくなる。筆を執っても心持は同じ事である。よそよそしい頭文字などはとても使う気にならない。`,
       customStyle: 'color: red;',
       styleObject: {
+        fontFamily: 'sans-serif',
         color: '#111',
         fontSize: '16px',
         lineHeight: '1.7',
@@ -64,6 +68,11 @@ export default {
   methods: {
     changeText: function (message) {
       this.message = message;
+    },
+    changeFontFamily: function (familyJa) {
+      this.styleObject.fontFamily = familyJa;
+      // CSSの値用に 欧文 -> 和文 の順に並べる
+      const familyJoin = '[WIPWIPWIPWIPWIP]';
     },
     changeFontSize: function (size) {
       this.styleObject.fontSize = `${size}px`;

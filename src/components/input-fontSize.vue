@@ -3,7 +3,7 @@
     FontSize: <input
       type="range"
       min="10"
-      max="100"
+      max="300"
       v-model="fontSize"
       @input="updateValue"
       @focus="$emit('focus', $event)"
@@ -12,7 +12,7 @@
     <input
       type="number"
       min="10"
-      max="100"
+      max="300"
       v-model="fontSize"
       @input="updateValue"
       @focus="$emit('focus', $event)"
