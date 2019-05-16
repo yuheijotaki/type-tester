@@ -2,14 +2,14 @@
   <div id="app">
     <div class="wrapper">
       <div class="tools">
-        <inputText @change="changeText"></inputText>
-        <inputFontSize @change="changeFontSize"></inputFontSize>
-        <inputLineHeight @change="changeLineHeight"></inputLineHeight>
-        <inputLetterSpacing @change="changeLetterSpacing"></inputLetterSpacing>
-        <radioFontWeight @change="changeFontWeight"></radioFontWeight>
-        <radioTextAlign @change="changeTextAlign"></radioTextAlign>
-        <radioFontSmoothing @change="changeFontSmoothing"></radioFontSmoothing>
-        <inputCustomStyle @change="changeCustomStyle"></inputCustomStyle>
+        <div><inputText @change="changeText"></inputText></div>
+        <div><inputFontSize @change="changeFontSize"></inputFontSize></div>
+        <div><inputLineHeight @change="changeLineHeight"></inputLineHeight></div>
+        <div><inputLetterSpacing @change="changeLetterSpacing"></inputLetterSpacing></div>
+        <div><radioFontWeight @change="changeFontWeight"></radioFontWeight></div>
+        <div><radioTextAlign @change="changeTextAlign"></radioTextAlign></div>
+        <div><radioFontSmoothing @change="changeFontSmoothing"></radioFontSmoothing></div>
+        <div><inputCustomStyle @change="changeCustomStyle"></inputCustomStyle></div>
       </div>
       <div class="container">
 <pre>
@@ -111,13 +111,16 @@ h1,h2,h3,h4,h5,h6 {
 .tools {
   box-sizing: border-box;
   background: #eee;
-  width: 30%;
+  width: 40%;
   min-height: 100vh;
   padding: 20px;
+  div {
+    margin-bottom: 20px;
+  }
 }
 .container {
   box-sizing: border-box;
-  width: 70%;
+  width: 60%;
   min-height: 100vh;
   padding: 20px;
   pre {
