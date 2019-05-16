@@ -8,6 +8,7 @@
         <inputLetterSpacing @change="changeLetterSpacing"></inputLetterSpacing>
         <radioFontWeight @change="changeFontWeight"></radioFontWeight>
         <radioTextAlign @change="changeTextAlign"></radioTextAlign>
+        <radioFontSmoothing @change="changeFontSmoothing"></radioFontSmoothing>
         <inputCustomStyle @change="changeCustomStyle"></inputCustomStyle>
       </div>
       <div class="container">
@@ -27,6 +28,7 @@ import inputLineHeight from './components/input-lineHeight'
 import inputLetterSpacing from './components/input-letterSpacing'
 import radioFontWeight from './components/radio-fontWeight'
 import radioTextAlign from './components/radio-textAlign'
+import radioFontSmoothing from './components/radio-fontSmoothing'
 import inputCustomStyle from './components/input-customStyle'
 import "normalize.css";
 
@@ -39,6 +41,7 @@ export default {
     inputLetterSpacing,
     radioFontWeight,
     radioTextAlign,
+    radioFontSmoothing,
     inputCustomStyle
   },
   data() {
@@ -51,7 +54,8 @@ export default {
         lineHeight: '1.7',
         letterSpacing: '0em',
         fontWeight: 'normal',
-        textAlign: 'left'
+        textAlign: 'left',
+        fontSmoothing: 'subpixel-antialiased'
       }
     }
   },
@@ -73,6 +77,9 @@ export default {
     },
     changeTextAlign: function (align) {
       this.styleObject.textAlign = align;
+    },
+    changeFontSmoothing: function (smooth) {
+      this.styleObject.fontSmoothing = smooth;
     },
     changeCustomStyle: function (sytle) {
       this.customStyle = sytle;
@@ -123,6 +130,5 @@ h1,h2,h3,h4,h5,h6 {
 }
 .container__block {
   white-space: pre-line;
-  animation: all 10s linear;
 }
 </style>
