@@ -1,15 +1,15 @@
 <template>
   <div>
-    Color: <input
+    Background: <input
       type="color"
-      v-model="color"
+      v-model="background"
       @input="updateValue"
       @focus="$emit('focus', $event)"
       @blur="$emit('blur', $event)"
     >
     <input
       type="text"
-      v-model="color"
+      v-model="background"
       @input="updateValue"
       @focus="$emit('focus', $event)"
       @blur="$emit('blur', $event)"
@@ -19,10 +19,10 @@
 
 <script>
 export default {
-  name: 'inputColor',
+  name: 'inputBackground',
   data() {
     return {
-      color: '#000000'
+      background: '#ffffff'
     }
   },
   methods: {

@@ -6,6 +6,7 @@
         <div><radioFontFamilyJa @change="changeFontFamily"></radioFontFamilyJa></div>
         <div><radioFontFamilyEn @change="changeFontFamily"></radioFontFamilyEn></div>
         <div><inputColor @change="changeColor"></inputColor></div>
+        <div><inputBackground @change="changeBackground"></inputBackground></div>
         <div><inputFontSize @change="changeFontSize"></inputFontSize></div>
         <div><inputLineHeight @change="changeLineHeight"></inputLineHeight></div>
         <div><inputLetterSpacing @change="changeLetterSpacing"></inputLetterSpacing></div>
@@ -29,6 +30,7 @@ import inputText from './components/input-text'
 import radioFontFamilyJa from './components/radio-fontFamilyJa'
 import radioFontFamilyEn from './components/radio-fontFamilyEn'
 import inputColor from './components/input-color'
+import inputBackground from './components/input-background'
 import inputFontSize from './components/input-fontSize'
 import inputLineHeight from './components/input-lineHeight'
 import inputLetterSpacing from './components/input-letterSpacing'
@@ -45,6 +47,7 @@ export default {
     radioFontFamilyJa,
     radioFontFamilyEn,
     inputColor,
+    inputBackground,
     inputFontSize,
     inputLineHeight,
     inputLetterSpacing,
@@ -61,7 +64,8 @@ export default {
       customStyle: 'color: red;',
       styleObject: {
         'font-family': 'Helvetica , Hiragino Kaku Gothic ProN',
-        'color': '#000',
+        'color': '#000000',
+        'background': '#ffffff',
         'font-size': '16px',
         'line-height': '1.7',
         'letter-spacing': '0em',
@@ -107,6 +111,9 @@ export default {
     },
     changeColor: function (color) {
       this.styleObject['color'] = color;
+    },
+    changeBackground: function (color) {
+      this.styleObject['background'] = color;
     },
     changeFontSize: function (size) {
       this.styleObject['font-size'] = `${size}px`;
