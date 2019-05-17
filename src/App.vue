@@ -5,6 +5,7 @@
         <div><inputText @change="changeText"></inputText></div>
         <div><radioFontFamilyJa @change="changeFontFamily"></radioFontFamilyJa></div>
         <div><radioFontFamilyEn @change="changeFontFamily"></radioFontFamilyEn></div>
+        <div><inputColor @change="changeColor"></inputColor></div>
         <div><inputFontSize @change="changeFontSize"></inputFontSize></div>
         <div><inputLineHeight @change="changeLineHeight"></inputLineHeight></div>
         <div><inputLetterSpacing @change="changeLetterSpacing"></inputLetterSpacing></div>
@@ -27,6 +28,7 @@ styleObject: {{styleObject}}
 import inputText from './components/input-text'
 import radioFontFamilyJa from './components/radio-fontFamilyJa'
 import radioFontFamilyEn from './components/radio-fontFamilyEn'
+import inputColor from './components/input-color'
 import inputFontSize from './components/input-fontSize'
 import inputLineHeight from './components/input-lineHeight'
 import inputLetterSpacing from './components/input-letterSpacing'
@@ -42,6 +44,7 @@ export default {
     inputText,
     radioFontFamilyJa,
     radioFontFamilyEn,
+    inputColor,
     inputFontSize,
     inputLineHeight,
     inputLetterSpacing,
@@ -58,7 +61,7 @@ export default {
       customStyle: 'color: red;',
       styleObject: {
         'font-family': 'Helvetica , Hiragino Kaku Gothic ProN',
-        'color': '#111',
+        'color': '#000',
         'font-size': '16px',
         'line-height': '1.7',
         'letter-spacing': '0em',
@@ -101,6 +104,9 @@ export default {
       // CSSの値用に 欧文指定 -> 和文指定 の順に並べる
       const familyJoin = `${familySelectedEn} , ${familySelectedJa}`;
       this.styleObject['font-family'] = familyJoin;
+    },
+    changeColor: function (color) {
+      this.styleObject['color'] = color;
     },
     changeFontSize: function (size) {
       this.styleObject['font-size'] = `${size}px`;
