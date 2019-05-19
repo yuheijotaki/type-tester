@@ -13,6 +13,8 @@
         <div><radioFontWeight @change="changeFontWeight"></radioFontWeight></div>
         <div><radioTextAlign @change="changeTextAlign"></radioTextAlign></div>
         <div><radioFontSmoothing @change="changeFontSmoothing"></radioFontSmoothing></div>
+        <div><inputPaddingVertical @change="changePaddingVertical"></inputPaddingVertical></div>
+        <div><inputPaddingHorizontal @change="changePaddingHorizontal"></inputPaddingHorizontal></div>
         <div><inputCustomStyle @change="changeCustomStyle"></inputCustomStyle></div>
       </div>
       <div class="container">
@@ -37,6 +39,8 @@ import inputLetterSpacing from './components/input-letterSpacing'
 import radioFontWeight from './components/radio-fontWeight'
 import radioTextAlign from './components/radio-textAlign'
 import radioFontSmoothing from './components/radio-fontSmoothing'
+import inputPaddingVertical from './components/input-paddingVertical'
+import inputPaddingHorizontal from './components/input-paddingHorizontal'
 import inputCustomStyle from './components/input-customStyle'
 import "normalize.css";
 
@@ -54,6 +58,8 @@ export default {
     radioFontWeight,
     radioTextAlign,
     radioFontSmoothing,
+    inputPaddingVertical,
+    inputPaddingHorizontal,
     inputCustomStyle
   },
   data() {
@@ -71,6 +77,10 @@ export default {
         'letter-spacing': '0em',
         'font-weight': 'normal',
         'text-align': 'left',
+        'padding-top': '0px',
+        'padding-bottom': '0px',
+        'padding-left': '0px',
+        'padding-right': '0px',
         '-webkit-font-smoothing': 'subpixel-antialiased'
       }
     }
@@ -132,6 +142,14 @@ export default {
     },
     changeFontSmoothing: function (smooth) {
       this.styleObject['-webkit-font-smoothing'] = smooth;
+    },
+    changePaddingVertical: function (space) {
+      this.styleObject['padding-top'] = `${space}px`;
+      this.styleObject['padding-bottom'] = `${space}px`;
+    },
+    changePaddingHorizontal: function (space) {
+      this.styleObject['padding-left'] = `${space}px`;
+      this.styleObject['padding-right'] = `${space}px`;
     },
     changeCustomStyle: function (sytle) {
       this.customStyle = sytle;
