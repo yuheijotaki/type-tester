@@ -18,7 +18,6 @@
           <div><inputPaddingVertical @change="changePaddingVertical"></inputPaddingVertical></div>
           <div><inputPaddingHorizontal @change="changePaddingHorizontal"></inputPaddingHorizontal></div>
           <div><radioFontFeatureSettings @change="changeFontFeatureSettings"></radioFontFeatureSettings></div>
-          <div><inputCustomStyle @change="changeCustomStyle"></inputCustomStyle></div>
         </form>
       </div>
       <div class="container">
@@ -32,6 +31,7 @@ styleObject: {{styleObject}}
 </template>
 
 <script>
+// コンポーネントのインポート
 import radioText from './components/radio-text'
 import inputText from './components/input-text'
 import radioFontFamilyJa from './components/radio-fontFamilyJa'
@@ -47,9 +47,11 @@ import radioFontSmoothing from './components/radio-fontSmoothing'
 import inputPaddingVertical from './components/input-paddingVertical'
 import inputPaddingHorizontal from './components/input-paddingHorizontal'
 import radioFontFeatureSettings from './components/radio-fontFeatureSettings'
-import inputCustomStyle from './components/input-customStyle'
+
+// ライブラリ読み込み
 import "normalize.css";
 
+// デフォルトテキストを定義
 const defaultTextJa = `私はその人を常に先生と呼んでいた。だからここでもただ先生と書くだけで本名は打ち明けない。これは世間を憚かる遠慮というよりも、その方が私にとって自然だからである。私はその人の記憶を呼び起すごとに、すぐ「先生」といいたくなる。筆を執っても心持は同じ事である。よそよそしい頭文字などはとても使う気にならない。`;
 const defaultTextEn = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`;
 
@@ -70,14 +72,12 @@ export default {
     radioFontSmoothing,
     inputPaddingVertical,
     inputPaddingHorizontal,
-    radioFontFeatureSettings,
-    inputCustomStyle
+    radioFontFeatureSettings
   },
   data() {
     return {
       textType: 'textJa',
       message: defaultTextJa,
-      customStyle: 'color: red;',
       styleObject: {
         'font-family': 'Helvetica , Hiragino Kaku Gothic ProN',
         'color': '#000000',
@@ -182,9 +182,6 @@ export default {
       } else {
         this.styleObject['font-feature-settings'] = `"${feature}"`;
       }
-    },
-    changeCustomStyle: function (sytle) {
-      this.customStyle = sytle;
     }
   }
 }
