@@ -17,6 +17,7 @@
           <div><radioFontSmoothing @change="changeFontSmoothing"></radioFontSmoothing></div>
           <div><inputPaddingVertical @change="changePaddingVertical"></inputPaddingVertical></div>
           <div><inputPaddingHorizontal @change="changePaddingHorizontal"></inputPaddingHorizontal></div>
+          <div><radioFontFeatureSettings @change="changeFontFeatureSettings"></radioFontFeatureSettings></div>
           <div><inputCustomStyle @change="changeCustomStyle"></inputCustomStyle></div>
         </form>
       </div>
@@ -45,6 +46,7 @@ import radioTextAlign from './components/radio-textAlign'
 import radioFontSmoothing from './components/radio-fontSmoothing'
 import inputPaddingVertical from './components/input-paddingVertical'
 import inputPaddingHorizontal from './components/input-paddingHorizontal'
+import radioFontFeatureSettings from './components/radio-fontFeatureSettings'
 import inputCustomStyle from './components/input-customStyle'
 import "normalize.css";
 
@@ -68,6 +70,7 @@ export default {
     radioFontSmoothing,
     inputPaddingVertical,
     inputPaddingHorizontal,
+    radioFontFeatureSettings,
     inputCustomStyle
   },
   data() {
@@ -88,6 +91,7 @@ export default {
         'padding-bottom': '0px',
         'padding-left': '0px',
         'padding-right': '0px',
+        'font-feature-settings': 'normal',
         '-webkit-font-smoothing': 'subpixel-antialiased'
       }
     }
@@ -171,6 +175,13 @@ export default {
     changePaddingHorizontal: function (space) {
       this.styleObject['padding-left'] = `${space}px`;
       this.styleObject['padding-right'] = `${space}px`;
+    },
+    changeFontFeatureSettings: function (feature) {
+      if ( feature === 'normal' ) {
+        this.styleObject['font-feature-settings'] = `${feature}`;
+      } else {
+        this.styleObject['font-feature-settings'] = `"${feature}"`;
+      }
     },
     changeCustomStyle: function (sytle) {
       this.customStyle = sytle;

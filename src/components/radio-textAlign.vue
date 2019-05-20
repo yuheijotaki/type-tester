@@ -25,6 +25,14 @@
         @input="updateValue"
       >
       <label for="textAlign03">right</label>
+      <input
+        type="radio"
+        id="textAlign04"
+        value="justify"
+        v-model="textAlign"
+        @input="updateValue"
+      >
+      <label for="textAlign04">justify</label>
   </div>
 </template>
 
