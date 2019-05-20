@@ -2,20 +2,23 @@
   <div id="app">
     <div class="wrapper">
       <div class="tools">
-        <div><inputText @change="changeText"></inputText></div>
-        <div><radioFontFamilyJa @change="changeFontFamily"></radioFontFamilyJa></div>
-        <div><radioFontFamilyEn @change="changeFontFamily"></radioFontFamilyEn></div>
-        <div><inputColor @change="changeColor"></inputColor></div>
-        <div><inputBackground @change="changeBackground"></inputBackground></div>
-        <div><inputFontSize @change="changeFontSize"></inputFontSize></div>
-        <div><inputLineHeight @change="changeLineHeight"></inputLineHeight></div>
-        <div><inputLetterSpacing @change="changeLetterSpacing"></inputLetterSpacing></div>
-        <div><radioFontWeight @change="changeFontWeight"></radioFontWeight></div>
-        <div><radioTextAlign @change="changeTextAlign"></radioTextAlign></div>
-        <div><radioFontSmoothing @change="changeFontSmoothing"></radioFontSmoothing></div>
-        <div><inputPaddingVertical @change="changePaddingVertical"></inputPaddingVertical></div>
-        <div><inputPaddingHorizontal @change="changePaddingHorizontal"></inputPaddingHorizontal></div>
-        <div><inputCustomStyle @change="changeCustomStyle"></inputCustomStyle></div>
+        <form action="#" name="tools">
+          <div><radioText @change="changeTextRadio"></radioText></div>
+          <div><inputText @change="changeText"></inputText></div>
+          <div><radioFontFamilyJa @change="changeFontFamily"></radioFontFamilyJa></div>
+          <div><radioFontFamilyEn @change="changeFontFamily"></radioFontFamilyEn></div>
+          <div><inputColor @change="changeColor"></inputColor></div>
+          <div><inputBackground @change="changeBackground"></inputBackground></div>
+          <div><inputFontSize @change="changeFontSize"></inputFontSize></div>
+          <div><inputLineHeight @change="changeLineHeight"></inputLineHeight></div>
+          <div><inputLetterSpacing @change="changeLetterSpacing"></inputLetterSpacing></div>
+          <div><radioFontWeight @change="changeFontWeight"></radioFontWeight></div>
+          <div><radioTextAlign @change="changeTextAlign"></radioTextAlign></div>
+          <div><radioFontSmoothing @change="changeFontSmoothing"></radioFontSmoothing></div>
+          <div><inputPaddingVertical @change="changePaddingVertical"></inputPaddingVertical></div>
+          <div><inputPaddingHorizontal @change="changePaddingHorizontal"></inputPaddingHorizontal></div>
+          <div><inputCustomStyle @change="changeCustomStyle"></inputCustomStyle></div>
+        </form>
       </div>
       <div class="container">
 <pre>
@@ -28,6 +31,7 @@ styleObject: {{styleObject}}
 </template>
 
 <script>
+import radioText from './components/radio-text'
 import inputText from './components/input-text'
 import radioFontFamilyJa from './components/radio-fontFamilyJa'
 import radioFontFamilyEn from './components/radio-fontFamilyEn'
@@ -44,9 +48,13 @@ import inputPaddingHorizontal from './components/input-paddingHorizontal'
 import inputCustomStyle from './components/input-customStyle'
 import "normalize.css";
 
+const defaultTextJa = `私はその人を常に先生と呼んでいた。だからここでもただ先生と書くだけで本名は打ち明けない。これは世間を憚かる遠慮というよりも、その方が私にとって自然だからである。私はその人の記憶を呼び起すごとに、すぐ「先生」といいたくなる。筆を執っても心持は同じ事である。よそよそしい頭文字などはとても使う気にならない。`;
+const defaultTextEn = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`;
+
 export default {
   name: 'App',
   components: {
+    radioText,
     inputText,
     radioFontFamilyJa,
     radioFontFamilyEn,
@@ -64,9 +72,8 @@ export default {
   },
   data() {
     return {
-      message: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-私はその人を常に先生と呼んでいた。だからここでもただ先生と書くだけで本名は打ち明けない。これは世間を憚かる遠慮というよりも、その方が私にとって自然だからである。私はその人の記憶を呼び起すごとに、すぐ「先生」といいたくなる。筆を執っても心持は同じ事である。よそよそしい頭文字などはとても使う気にならない。`,
+      textType: 'textJa',
+      message: defaultTextJa,
       customStyle: 'color: red;',
       styleObject: {
         'font-family': 'Helvetica , Hiragino Kaku Gothic ProN',
@@ -100,6 +107,20 @@ export default {
         }
       }
       return result;
+    },
+    changeTextRadio: function (textType) {
+      const inputTextArea = document.tools.inputTextArea; // ツールのテキストエリアオブジェクトを取得
+      const textTypeValue = textType;                     // 選択されたラジオボタンのテキストタイプを取得
+      if ( textTypeValue === 'textJa' ) {
+        inputTextArea.value = defaultTextJa; // ツールのテキストエリアの値書き換え
+        this.message = defaultTextJa;        // プレビューエリアのテキストを書き換え
+      } else if ( textTypeValue === 'textEn' ) {
+        inputTextArea.value = defaultTextEn;
+        this.message = defaultTextEn;
+      } else if ( textTypeValue === 'textFree' ) {
+        inputTextArea.value = ``;
+        this.message = ``;
+      }
     },
     changeText: function (message) {
       this.message = message;
