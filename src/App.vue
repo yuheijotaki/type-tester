@@ -3,8 +3,8 @@
     <div class="wrapper">
       <div class="tools">
         <form action="#" name="tools">
-          <radioText @change="changeTextRadio"></radioText>
-          <inputText @change="changeText"></inputText>
+          <radioTextType @change="changeTextRadio"></radioTextType>
+          <inputTextContent @change="changeText"></inputTextContent>
           <radioFontFamilyJa @change="changeFontFamily"></radioFontFamilyJa>
           <radioFontFamilyEn @change="changeFontFamily"></radioFontFamilyEn>
           <inputColor @change="changeColor"></inputColor>
@@ -42,8 +42,8 @@
 
 <script>
 // コンポーネントのインポート
-import radioText from './components/radio-text'
-import inputText from './components/input-text'
+import radioTextType from './components/radio-textType'
+import inputTextContent from './components/input-textContent'
 import radioFontFamilyJa from './components/radio-fontFamilyJa'
 import radioFontFamilyEn from './components/radio-fontFamilyEn'
 import inputColor from './components/input-color'
@@ -68,8 +68,8 @@ const defaultTextEn = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
 export default {
   name: 'App',
   components: {
-    radioText,
-    inputText,
+    radioTextType,
+    inputTextContent,
     radioFontFamilyJa,
     radioFontFamilyEn,
     inputColor,

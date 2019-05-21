@@ -35,7 +35,7 @@
 
 <script>
 export default {
-  name: 'radioText',
+  name: 'radioTextType',
   data() {
     return {
       textType: `textJa`
