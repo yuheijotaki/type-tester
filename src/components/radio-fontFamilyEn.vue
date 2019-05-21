@@ -1,6 +1,7 @@
 <template>
-  <div>
-    fontFamilyEn:
+  <div class="tools__item">
+    <p class="tools__label">font-family(EN):</p>
+    <div class="tools__block">
       <input
         type="radio"
         name="fontFamilyEn"
@@ -37,6 +38,7 @@
         @input="updateValue"
       >
       <label for="fontFamilyEn04">Times</label>
+    </div>
   </div>
 </template>
 

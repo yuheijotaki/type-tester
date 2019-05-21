@@ -1,6 +1,7 @@
 <template>
-  <div>
-    fontFamilyJa:
+  <div class="tools__item">
+    <p class="tools__label">font-family(JP):</p>
+    <div class="tools__block">
       <input
         type="radio"
         name="fontFamilyJa"
@@ -37,6 +38,7 @@
         @input="updateValue"
       >
       <label for="fontFamilyJa04">YuMincho</label>
+    </div>
   </div>
 </template>
 

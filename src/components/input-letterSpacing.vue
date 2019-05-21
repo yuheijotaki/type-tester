@@ -1,25 +1,29 @@
 <template>
-  <div>
-    letterSpacing: <input
-      type="range"
-      min="0"
-      max="1"
-      step="0.01"
-      v-model="letterSpacing"
-      @input="updateValue"
-      @focus="$emit('focus', $event)"
-      @blur="$emit('blur', $event)"
-    >
-    <input
-      type="number"
-      min="0"
-      max="1"
-      step="0.01"
-      v-model="letterSpacing"
-      @input="updateValue"
-      @focus="$emit('focus', $event)"
-      @blur="$emit('blur', $event)"
-    > em
+  <div class="tools__item">
+    <p class="tools__label">letter-spacing:</p>
+    <div class="tools__block">
+      <input
+        type="range"
+        min="0"
+        max="1"
+        step="0.01"
+        v-model="letterSpacing"
+        @input="updateValue"
+        @focus="$emit('focus', $event)"
+        @blur="$emit('blur', $event)"
+      >
+      <input
+        type="number"
+        min="0"
+        max="1"
+        step="0.01"
+        v-model="letterSpacing"
+        @input="updateValue"
+        @focus="$emit('focus', $event)"
+        @blur="$emit('blur', $event)"
+      >
+      <p class="tools__unit">em</p>
+    </div>
   </div>
 </template>
 

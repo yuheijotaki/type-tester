@@ -1,6 +1,7 @@
 <template>
-  <div>
-    textType:
+  <div class="tools__item">
+    <p class="tools__label">text type:</p>
+    <div class="tools__block">
       <input
         type="radio"
         name="textType"
@@ -28,6 +29,7 @@
         @input="updateValue"
       >
       <label for="textFree">自由入力</label><br>
+    </div>
   </div>
 </template>
 

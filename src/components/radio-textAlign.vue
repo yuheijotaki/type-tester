@@ -1,6 +1,7 @@
 <template>
-  <div>
-    textAlign:
+  <div class="tools__item">
+    <p class="tools__label">textAlign:</p>
+    <div class="tools__block">
       <input
         type="radio"
         id="textAlign01"
@@ -33,6 +34,7 @@
         @input="updateValue"
       >
       <label for="textAlign04">justify</label>
+    </div>
   </div>
 </template>
 

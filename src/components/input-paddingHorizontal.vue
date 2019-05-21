@@ -1,23 +1,27 @@
 <template>
-  <div>
-    padding left & right: <input
-      type="range"
-      min="0"
-      max="200"
-      v-model="paddingHorizontal"
-      @input="updateValue"
-      @focus="$emit('focus', $event)"
-      @blur="$emit('blur', $event)"
-    >
-    <input
-      type="number"
-      min="0"
-      max="200"
-      v-model="paddingHorizontal"
-      @input="updateValue"
-      @focus="$emit('focus', $event)"
-      @blur="$emit('blur', $event)"
-    > px
+  <div class="tools__item">
+    <p class="tools__label">padding-left/padding-right:</p>
+    <div class="tools__block">
+      <input
+        type="range"
+        min="0"
+        max="200"
+        v-model="paddingHorizontal"
+        @input="updateValue"
+        @focus="$emit('focus', $event)"
+        @blur="$emit('blur', $event)"
+      >
+      <input
+        type="number"
+        min="0"
+        max="200"
+        v-model="paddingHorizontal"
+        @input="updateValue"
+        @focus="$emit('focus', $event)"
+        @blur="$emit('blur', $event)"
+      >
+      <p class="tools__unit">px</p>
+    </div>
   </div>
 </template>
 

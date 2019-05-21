@@ -1,6 +1,7 @@
 <template>
-  <div>
-    font-feature-settings:
+  <div class="tools__item">
+    <p class="tools__label">font-feature-settings:</p>
+    <div class="tools__block">
       <input
         type="radio"
         id="fontFeatureSettings01"
@@ -33,6 +34,7 @@
         @input="updateValue"
       >
       <label for="fontFeatureSettings04">pkna</label>
+    </div>
   </div>
 </template>
 

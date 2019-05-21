@@ -1,6 +1,7 @@
 <template>
-  <div>
-    FontSmoothing:
+  <div class="tools__item">
+    <p class="tools__label">font-smoothing:</p>
+    <div class="tools__block">
       <input
         type="radio"
         id="fontSmoothing01"
@@ -25,6 +26,7 @@
         @input="updateValue"
       >
       <label for="fontSmoothing03">none</label>
+    </div>
   </div>
 </template>
 

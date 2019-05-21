@@ -1,6 +1,7 @@
 <template>
-  <div>
-    fontWeight:
+  <div class="tools__item">
+    <p class="tools__label">font-weight:</p>
+    <div class="tools__block">
       <input
         type="radio"
         id="fontWeight01"
@@ -17,6 +18,7 @@
         @input="updateValue"
       >
       <label for="fontWeight02">bold</label>
+    </div>
   </div>
 </template>
 

@@ -1,23 +1,27 @@
 <template>
-  <div>
-    FontSize: <input
-      type="range"
-      min="10"
-      max="300"
-      v-model="fontSize"
-      @input="updateValue"
-      @focus="$emit('focus', $event)"
-      @blur="$emit('blur', $event)"
-    >
-    <input
-      type="number"
-      min="10"
-      max="300"
-      v-model="fontSize"
-      @input="updateValue"
-      @focus="$emit('focus', $event)"
-      @blur="$emit('blur', $event)"
-    > px
+  <div class="tools__item">
+    <p class="tools__label">font-size:</p>
+    <div class="tools__block">
+      <input
+        type="range"
+        min="10"
+        max="300"
+        v-model="fontSize"
+        @input="updateValue"
+        @focus="$emit('focus', $event)"
+        @blur="$emit('blur', $event)"
+      >
+      <input
+        type="number"
+        min="10"
+        max="300"
+        v-model="fontSize"
+        @input="updateValue"
+        @focus="$emit('focus', $event)"
+        @blur="$emit('blur', $event)"
+      >
+      <p class="tools__unit">px</p>
+    </div>
   </div>
 </template>
 

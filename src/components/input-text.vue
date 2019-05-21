@@ -1,12 +1,15 @@
 <template>
-  <div>
-    Text: <textarea
-      name="inputTextArea"
-      :value="message"
-      @input="updateValue"
-      @focus="$emit('focus', $event)"
-      @blur="$emit('blur', $event)"
-    ></textarea>
+  <div class="tools__item">
+    <p class="tools__label">text content:</p>
+    <div class="tools__block">
+      <textarea
+        name="inputTextArea"
+        :value="message"
+        @input="updateValue"
+        @focus="$emit('focus', $event)"
+        @blur="$emit('blur', $event)"
+      ></textarea>
+    </div>
   </div>
 </template>
 
@@ -28,9 +31,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-textarea {
-  width: 100%;
-  max-width: 100%;
-  height: 200px;
-}
 </style>

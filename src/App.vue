@@ -3,21 +3,21 @@
     <div class="wrapper">
       <div class="tools">
         <form action="#" name="tools">
-          <div><radioText @change="changeTextRadio"></radioText></div>
-          <div><inputText @change="changeText"></inputText></div>
-          <div><radioFontFamilyJa @change="changeFontFamily"></radioFontFamilyJa></div>
-          <div><radioFontFamilyEn @change="changeFontFamily"></radioFontFamilyEn></div>
-          <div><inputColor @change="changeColor"></inputColor></div>
-          <div><inputBackground @change="changeBackground"></inputBackground></div>
-          <div><inputFontSize @change="changeFontSize"></inputFontSize></div>
-          <div><inputLineHeight @change="changeLineHeight"></inputLineHeight></div>
-          <div><inputLetterSpacing @change="changeLetterSpacing"></inputLetterSpacing></div>
-          <div><radioFontWeight @change="changeFontWeight"></radioFontWeight></div>
-          <div><radioTextAlign @change="changeTextAlign"></radioTextAlign></div>
-          <div><radioFontSmoothing @change="changeFontSmoothing"></radioFontSmoothing></div>
-          <div><inputPaddingVertical @change="changePaddingVertical"></inputPaddingVertical></div>
-          <div><inputPaddingHorizontal @change="changePaddingHorizontal"></inputPaddingHorizontal></div>
-          <div><radioFontFeatureSettings @change="changeFontFeatureSettings"></radioFontFeatureSettings></div>
+          <radioText @change="changeTextRadio"></radioText>
+          <inputText @change="changeText"></inputText>
+          <radioFontFamilyJa @change="changeFontFamily"></radioFontFamilyJa>
+          <radioFontFamilyEn @change="changeFontFamily"></radioFontFamilyEn>
+          <inputColor @change="changeColor"></inputColor>
+          <inputBackground @change="changeBackground"></inputBackground>
+          <inputFontSize @change="changeFontSize"></inputFontSize>
+          <inputLineHeight @change="changeLineHeight"></inputLineHeight>
+          <inputLetterSpacing @change="changeLetterSpacing"></inputLetterSpacing>
+          <radioFontWeight @change="changeFontWeight"></radioFontWeight>
+          <radioTextAlign @change="changeTextAlign"></radioTextAlign>
+          <radioFontSmoothing @change="changeFontSmoothing"></radioFontSmoothing>
+          <inputPaddingVertical @change="changePaddingVertical"></inputPaddingVertical>
+          <inputPaddingHorizontal @change="changePaddingHorizontal"></inputPaddingHorizontal>
+          <radioFontFeatureSettings @change="changeFontFeatureSettings"></radioFontFeatureSettings>
         </form>
       </div>
       <div class="container">
@@ -104,8 +104,7 @@ export default {
         'font-feature-settings': 'normal',
         '-webkit-font-smoothing': 'subpixel-antialiased'
       },
-      displayCss: true
-      // displayCss: false
+      displayCss: false
     }
   },
   methods: {
@@ -240,6 +239,8 @@ h1,h2,h3,h4,h5,h6 {
   margin: 0;
   padding: 0;
 }
+
+// app
 #app {
   font-family: Helvetica Neue, Helvetica, Arial, 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -248,23 +249,58 @@ h1,h2,h3,h4,h5,h6 {
   // text-rendering: optimizeLegibility;
   // font-feature-settings : "palt";
 }
+
+// wrapper
 .wrapper {
   display: flex;
   position: relative;
 }
+
+// tools
 .tools {
   box-sizing: border-box;
   background: #eee;
   width: 40%;
   min-height: 100vh;
   padding: 20px;
+  font-size: 12px;
+  line-height: 1.2;
   &.js-tools-active {
     display: none;
   }
-  div {
-    margin-bottom: 20px;
+}
+.tools__item {
+  margin-bottom: 15px;
+  &:last-child {
+    margin-bottom: 0;
   }
 }
+.tools__block {
+  margin-top: 5px;
+  display: flex;
+  input[type="text"],
+  input[type="number"],
+  input[type="color"],
+  input[type="range"],
+  label {
+    margin-right: 5px;
+  }
+  input[type="radio"] {
+    margin-right: 2px;
+  }
+  textarea {
+    width: 100%;
+    max-width: 100%;
+    height: 100px;
+  }
+}
+.tools__label {
+  background: #666;
+  color: #fff;
+  padding: 3px 6px;
+}
+
+// container
 .container {
   box-sizing: border-box;
   width: 60%;
@@ -283,6 +319,8 @@ h1,h2,h3,h4,h5,h6 {
 .container__block {
   white-space: pre-line;
 }
+
+// toggle
 .toggle {
   position: fixed;
   bottom: 20px;

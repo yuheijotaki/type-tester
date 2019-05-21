@@ -1,19 +1,22 @@
 <template>
-  <div>
-    Color: <input
-      type="color"
-      v-model="color"
-      @input="updateValue"
-      @focus="$emit('focus', $event)"
-      @blur="$emit('blur', $event)"
-    >
-    <input
-      type="text"
-      v-model="color"
-      @input="updateValue"
-      @focus="$emit('focus', $event)"
-      @blur="$emit('blur', $event)"
-    >
+  <div class="tools__item">
+    <p class="tools__label">color:</p>
+    <div class="tools__block">
+      <input
+        type="color"
+        v-model="color"
+        @input="updateValue"
+        @focus="$emit('focus', $event)"
+        @blur="$emit('blur', $event)"
+      >
+      <input
+        type="text"
+        v-model="color"
+        @input="updateValue"
+        @focus="$emit('focus', $event)"
+        @blur="$emit('blur', $event)"
+      >
+    </div>
   </div>
 </template>
 
