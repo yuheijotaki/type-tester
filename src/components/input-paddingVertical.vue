@@ -26,7 +26,7 @@ export default {
   name: 'inputPaddingVertical',
   data() {
     return {
-      paddingVertical: 0
+      paddingVertical: 20
     }
   },
   methods: {

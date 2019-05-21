@@ -21,11 +21,21 @@
         </form>
       </div>
       <div class="container">
-<pre>
-styleObject: {{styleObject}}
-</pre>
+        <template v-if="displayCss">
+          <div class="css">
+            <pre>CSS: {{styleObject}}</pre>
+          </div>
+        </template>
         <div class="container__block" v-bind:style="styleObject">{{message}}</div>
       </div>
+      <ul class="toggle">
+        <li class="toggle__button">
+          <a class="toggle__anchor" href="javascript:void(0);" v-on:click="toggleTools">Tools toggle button</a>
+        </li>
+        <li class="toggle__button">
+          <a class="toggle__anchor" href="javascript:void(0);" v-on:click="toggleCss">CSS toggle button</a>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -87,16 +97,32 @@ export default {
         'letter-spacing': '0em',
         'font-weight': 'normal',
         'text-align': 'left',
-        'padding-top': '0px',
-        'padding-bottom': '0px',
-        'padding-left': '0px',
-        'padding-right': '0px',
+        'padding-top': '20px',
+        'padding-bottom': '20px',
+        'padding-left': '20px',
+        'padding-right': '20px',
         'font-feature-settings': 'normal',
         '-webkit-font-smoothing': 'subpixel-antialiased'
-      }
+      },
+      displayTools: true,
+      displayCss: false
     }
   },
   methods: {
+    // CSSエリアのトグル表示
+    toggleCss: function () {
+      // `.css` クラスのトグル
+      this.displayCss = !this.displayCss;
+    },
+    // ツールのトグル表示
+    toggleTools: function () {
+      // `.tools` クラスのトグル
+      const tools = document.querySelector('.tools');
+      tools.classList.toggle('js-tools-active');
+      // `.container` クラスのトグル
+      const container = document.querySelector('.container');
+      container.classList.toggle('js-tools-active');
+    },
     getOtherSideFont: function (name) {
       // ラジオボタンオブジェクトを取得する
       // ref: https://javascript.programmer-reference.com/js-radio-value/
@@ -206,6 +232,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 .wrapper {
   display: flex;
+  position: relative;
 }
 .tools {
   box-sizing: border-box;
@@ -213,6 +240,9 @@ h1,h2,h3,h4,h5,h6 {
   width: 40%;
   min-height: 100vh;
   padding: 20px;
+  &.js-tools-active {
+    display: none;
+  }
   div {
     margin-bottom: 20px;
   }
@@ -221,10 +251,11 @@ h1,h2,h3,h4,h5,h6 {
   box-sizing: border-box;
   width: 60%;
   min-height: 100vh;
-  padding: 20px;
+  &.js-tools-active {
+    width: 100%;
+  }
   pre {
-    background: #eee;
-    margin-bottom: 20px;
+    background: #ddd;
     padding: 20px;
     font-size: 14px;
     line-height: 1.4;
@@ -232,5 +263,28 @@ h1,h2,h3,h4,h5,h6 {
 }
 .container__block {
   white-space: pre-line;
+}
+.toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  list-style: none;
+}
+.toggle__button {
+  margin-right: 10px;
+  font-size: 12px;
+  line-height: 1;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+.toggle__anchor {
+  display: block;
+  padding: 4px 6px;
+  background: #fff;
+  border: #000 1px solid;
+  color: #000;
+  text-decoration: none;
 }
 </style>

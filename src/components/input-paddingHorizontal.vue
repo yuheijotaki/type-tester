@@ -26,7 +26,7 @@ export default {
   name: 'inputPaddingHorizontal',
   data() {
     return {
-      paddingHorizontal: 0
+      paddingHorizontal: 20
     }
   },
   methods: {
