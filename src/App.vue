@@ -23,7 +23,7 @@
       <div class="container">
         <template v-if="displayCss">
           <div class="css">
-            <pre>CSS: {{styleObject}}</pre>
+            <pre>{{styleObjectFormatted}}</pre>
           </div>
         </template>
         <div class="container__block" v-bind:style="styleObject">{{message}}</div>
@@ -104,8 +104,8 @@ export default {
         'font-feature-settings': 'normal',
         '-webkit-font-smoothing': 'subpixel-antialiased'
       },
-      displayTools: true,
-      displayCss: false
+      displayCss: true
+      // displayCss: false
     }
   },
   methods: {
@@ -209,6 +209,24 @@ export default {
         this.styleObject['font-feature-settings'] = `"${feature}"`;
       }
     }
+  },
+  computed: {
+    // styleObject を出力用に整形
+    styleObjectFormatted: function () {
+      const styleObject = this.styleObject; // styleObject を取得
+      const styleObjectArray = []; // テキスト用の配列を用意
+      // styleObject をループして新しい配列に key と value を格納
+      Object.keys(styleObject).forEach(function (key) {
+        if ( key === 'font-family' ) {
+          // key が 'font-family' の場合は値に '""' をつける
+          styleObjectArray.push(`${key}: "${styleObject[key]}";`);
+        } else {
+          styleObjectArray.push(`${key}: ${styleObject[key]};`);
+        }
+      });
+      const styleObjectText = styleObjectArray.join('\n'); // 1行ずつ改行処理
+      return styleObjectText;
+    }
   }
 }
 </script>
@@ -255,8 +273,9 @@ h1,h2,h3,h4,h5,h6 {
     width: 100%;
   }
   pre {
-    background: #ddd;
+    background: #262a34;
     padding: 20px;
+    color: #b8bdc7;
     font-size: 14px;
     line-height: 1.4;
   }
