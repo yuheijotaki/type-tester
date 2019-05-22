@@ -67,6 +67,32 @@ const defaultTextEn = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
 
 export default {
   name: 'App',
+  head: {
+    title: {
+      inner: 'Type tester'
+    },
+    // Meta tags
+    meta: [
+      { name: 'application-name', content: 'Name of my application' },
+      { name: 'description', content: 'A description of the page', id: 'desc' }, // id to replace intead of create element
+      // ...
+      // Twitter
+      { name: 'twitter:title', content: 'Content Title' },
+      // with shorthand
+      { n: 'twitter:description', c: 'Content description less than 200 characters'},
+      // ...
+      // Google+ / Schema.org
+      { itemprop: 'name', content: 'Content Title' },
+      { itemprop: 'description', content: 'Content Title' },
+      // ...
+      // Facebook / Open Graph
+      { property: 'fb:app_id', content: '123456789' },
+      { property: 'og:title', content: 'Content Title' },
+      // with shorthand
+      { p: 'og:image', c: 'https://example.com/image.jpg' },
+      // ...
+    ],
+  },
   components: {
     radioTextType,
     inputTextContent,
@@ -244,10 +270,6 @@ h1,h2,h3,h4,h5,h6 {
 #app {
   font-family: Helvetica Neue, Helvetica, Arial, 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
   -webkit-text-size-adjust: 100%;
-  // -webkit-font-smoothing: antialiased;
-  // -moz-osx-font-smoothing: grayscale;
-  // text-rendering: optimizeLegibility;
-  // font-feature-settings : "palt";
 }
 
 // wrapper
@@ -265,6 +287,7 @@ h1,h2,h3,h4,h5,h6 {
   padding: 20px;
   font-size: 12px;
   line-height: 1.2;
+  @include fontSmooth;
   &.js-tools-active {
     display: none;
   }
@@ -292,6 +315,8 @@ h1,h2,h3,h4,h5,h6 {
     width: 100%;
     max-width: 100%;
     height: 100px;
+    line-height: 1.4;
+    padding: 5px;
   }
 }
 .tools__label {
@@ -308,6 +333,11 @@ h1,h2,h3,h4,h5,h6 {
   &.js-tools-active {
     width: 100%;
   }
+}
+
+// css
+.css {
+  @include fontSmooth;
   pre {
     background: #262a34;
     padding: 20px;
@@ -316,6 +346,8 @@ h1,h2,h3,h4,h5,h6 {
     line-height: 1.4;
   }
 }
+
+// container__block
 .container__block {
   white-space: pre-line;
 }
@@ -327,6 +359,7 @@ h1,h2,h3,h4,h5,h6 {
   right: 20px;
   display: flex;
   list-style: none;
+  @include fontSmooth;
 }
 .toggle__button {
   margin-right: 10px;
