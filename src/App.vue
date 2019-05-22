@@ -104,8 +104,93 @@ export default {
         'font-feature-settings': 'normal',
         '-webkit-font-smoothing': 'subpixel-antialiased'
       },
+      displayTools: true,
       displayCss: false,
       metaTitle: 'site title'
+    }
+  },
+  mounted() {
+    // ローカルストレージ textType が あればラジオの選択状態を変更
+    const local_textType = localStorage.getItem('textType');
+    document.tools.textType.value = local_textType;
+    const inputTextArea = document.tools.inputTextArea; // ツールのテキストエリアオブジェクトを取得
+    if ( local_textType === 'textJa' ) {
+      inputTextArea.value = defaultTextJa; // ツールのテキストエリアの値書き換え
+      this.message = defaultTextJa;        // プレビューエリアのテキストを書き換え
+    } else if ( local_textType === 'textEn' ) {
+      inputTextArea.value = defaultTextEn;
+      this.message = defaultTextEn;
+    } else if ( local_textType === 'textFree' ) {
+      inputTextArea.value = ``;
+      this.message = ``;
+    }
+    // ローカルストレージに styleObject があるかチェック
+    const local_styleObject = localStorage.getItem('styleObject');
+    if ( local_styleObject ) {
+      // ある場合、その styleObject を上書きする（CSS/テキストコンテンツにも適用される）
+      this.styleObject = JSON.parse(local_styleObject) || []
+      /********************
+      * ツールのinput要素を styleObject のスタイル通りに選択する
+      ********************/
+      const local_fontFamilly = this.styleObject['font-family'];
+      const local_fontFamillyArray = local_fontFamilly.split(' , ');
+      document.tools.fontFamilyEn.value = local_fontFamillyArray[0];
+      document.tools.fontFamilyJa.value = local_fontFamillyArray[1];
+      // color
+      document.tools.colorPalette.value = this.styleObject['color'];
+      document.tools.color.value = this.styleObject['color'];
+      // background
+      document.tools.backgroundPalette.value = this.styleObject['background'];
+      document.tools.background.value = this.styleObject['background'];
+      // font-size
+      const local_fontSize = this.styleObject['font-size'].replace('px','');
+      document.tools.fontSizeRange.value = local_fontSize;
+      document.tools.fontSize.value = local_fontSize;
+      // line-height
+      document.tools.lineHeightRange.value = this.styleObject['line-height'];
+      document.tools.lineHeight.value = this.styleObject['line-height'];
+      // line-height
+      document.tools.lineHeightRange.value = this.styleObject['line-height'];
+      document.tools.lineHeight.value = this.styleObject['line-height'];
+      // letter-spacing
+      const local_letterSpacing = this.styleObject['letter-spacing'].replace('em','');
+      document.tools.letterSpacingRange.value = local_letterSpacing;
+      document.tools.letterSpacing.value = local_letterSpacing;
+      // font-weight
+      document.tools.fontWeight.value = this.styleObject['font-weight'];
+      // -webkit-font-smoothing
+      document.tools.fontSmoothing.value = this.styleObject['-webkit-font-smoothing'];
+      // padding-top / padding-bottom
+      const local_paddingVertical = this.styleObject['padding-top'].replace('px','');
+      document.tools.paddingVerticalRange.value = local_paddingVertical;
+      document.tools.paddingVertical.value = local_paddingVertical;
+      // padding-left / padding-right
+      const local_paddingHorizontal = this.styleObject['padding-left'].replace('px','');
+      document.tools.paddingHorizontalRange.value = local_paddingHorizontal;
+      document.tools.paddingHorizontal.value = local_paddingHorizontal;
+      // font-feature-settings
+      let local_fontFeatureSettings = this.styleObject['font-feature-settings'].replace(/"/g,'');
+      document.tools.fontFeatureSettings.value = local_fontFeatureSettings;
+    }
+    // ローカルストレージ displayCss が true ならば CSSエリアを表示
+    const local_displayCss = JSON.parse(localStorage.getItem('displayCss'));
+    if ( local_displayCss === true ) {
+      this.displayCss = true;
+    } else {
+      this.displayCss = false;
+    }
+    // ローカルストレージ displayTools が true ならば CSSエリアを表示
+    const local_displayTools = JSON.parse(localStorage.getItem('displayTools'));
+    if ( local_displayTools === true ) {
+      // Tools が表示（true）の場合
+      this.displayTools = true;
+    } else if ( local_displayTools === false ) {
+      // Tools が非表示（false）の場合
+      this.displayTools = false;
+      const tools = document.querySelector('.tools');
+      tools.classList.add('js-tools-active');
+      const container = document.querySelector('.container');
+      container.classList.add('js-tools-active');
     }
   },
   methods: {
@@ -113,15 +198,19 @@ export default {
     toggleCss: function () {
       // `.css` クラスのトグル
       this.displayCss = !this.displayCss;
+      this.setToolsInfo();
     },
     // ツールのトグル表示
     toggleTools: function () {
+      // データのトグル（ローカルストレージ用）
+      this.displayTools = !this.displayTools;
       // `.tools` クラスのトグル
       const tools = document.querySelector('.tools');
       tools.classList.toggle('js-tools-active');
       // `.container` クラスのトグル
       const container = document.querySelector('.container');
       container.classList.toggle('js-tools-active');
+      this.setToolsInfo();
     },
     getOtherSideFont: function (name) {
       // ラジオボタンオブジェクトを取得する
@@ -137,6 +226,7 @@ export default {
         }
       }
       return result;
+      this.setStylesInfo();
     },
     changeTextRadio: function (textType) {
       const inputTextArea = document.tools.inputTextArea; // ツールのテキストエリアオブジェクトを取得
@@ -151,9 +241,12 @@ export default {
         inputTextArea.value = ``;
         this.message = ``;
       }
+      this.textType = textTypeValue;
+      this.setStylesInfo();
     },
     changeText: function (message) {
       this.message = message;
+      // this.setStylesInfo();
     },
     changeFontFamily: function (family) {
       // フォントファミリーが変更された際の日本語/英語の処理分岐
@@ -169,38 +262,49 @@ export default {
       // CSSの値用に 欧文指定 -> 和文指定 の順に並べる
       const familyJoin = `${familySelectedEn} , ${familySelectedJa}`;
       this.styleObject['font-family'] = familyJoin;
+      this.setStylesInfo();
     },
     changeColor: function (color) {
       this.styleObject['color'] = color;
+      this.setStylesInfo();
     },
     changeBackground: function (color) {
       this.styleObject['background'] = color;
+      this.setStylesInfo();
     },
     changeFontSize: function (size) {
       this.styleObject['font-size'] = `${size}px`;
+      this.setStylesInfo();
     },
     changeLineHeight: function (height) {
       this.styleObject['line-height'] = height;
+      this.setStylesInfo();
     },
     changeLetterSpacing: function (space) {
       this.styleObject['letter-spacing'] = `${space}em`;
+      this.setStylesInfo();
     },
     changeFontWeight: function (weight) {
       this.styleObject['font-weight'] = weight;
+      this.setStylesInfo();
     },
     changeTextAlign: function (align) {
       this.styleObject['text-align'] = align;
+      this.setStylesInfo();
     },
     changeFontSmoothing: function (smooth) {
       this.styleObject['-webkit-font-smoothing'] = smooth;
+      this.setStylesInfo();
     },
     changePaddingVertical: function (space) {
       this.styleObject['padding-top'] = `${space}px`;
       this.styleObject['padding-bottom'] = `${space}px`;
+      this.setStylesInfo();
     },
     changePaddingHorizontal: function (space) {
       this.styleObject['padding-left'] = `${space}px`;
       this.styleObject['padding-right'] = `${space}px`;
+      this.setStylesInfo();
     },
     changeFontFeatureSettings: function (feature) {
       if ( feature === 'normal' ) {
@@ -208,6 +312,16 @@ export default {
       } else {
         this.styleObject['font-feature-settings'] = `"${feature}"`;
       }
+      this.setStylesInfo();
+    },
+    // ローカルストレージに styleObject を保存
+    setStylesInfo() {
+      localStorage.setItem('styleObject', JSON.stringify(this.styleObject));
+      localStorage.setItem('textType', this.textType);
+    },
+    setToolsInfo() {
+      localStorage.setItem('displayTools', this.displayTools);
+      localStorage.setItem('displayCss', this.displayCss);
     }
   },
   computed: {

@@ -3,6 +3,7 @@
     <p class="tools__label">padding-top/padding-bottom:</p>
     <div class="tools__block">
       <input
+        name="paddingVerticalRange"
         type="range"
         min="0"
         max="200"
@@ -12,6 +13,7 @@
         @blur="$emit('blur', $event)"
       >
       <input
+        name="paddingVertical"
         type="number"
         min="0"
         max="200"

@@ -3,6 +3,7 @@
     <p class="tools__label">letter-spacing:</p>
     <div class="tools__block">
       <input
+        name="letterSpacingRange"
         type="range"
         min="0"
         max="1"
@@ -13,6 +14,7 @@
         @blur="$emit('blur', $event)"
       >
       <input
+        name="letterSpacing"
         type="number"
         min="0"
         max="1"

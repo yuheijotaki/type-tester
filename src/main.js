@@ -3,10 +3,12 @@
 import Vue from 'vue'
 import App from './App'
 import VueHead from 'vue-head'
-
-Vue.config.productionTip = false
+import VueLocalStorage from 'vue-ls'
 
 Vue.use(VueHead)
+Vue.use(VueLocalStorage)
+
+Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({

@@ -3,6 +3,7 @@
     <p class="tools__label">font-smoothing:</p>
     <div class="tools__block">
       <input
+        name="fontSmoothing"
         type="radio"
         id="fontSmoothing01"
         value="subpixel-antialiased"
@@ -11,6 +12,7 @@
       >
       <label for="fontSmoothing01">subpixel-antialiased</label>
       <input
+        name="fontSmoothing"
         type="radio"
         id="fontSmoothing02"
         value="antialiased"
@@ -19,6 +21,7 @@
       >
       <label for="fontSmoothing02">antialiased</label>
       <input
+        name="fontSmoothing"
         type="radio"
         id="fontSmoothing03"
         value="none"

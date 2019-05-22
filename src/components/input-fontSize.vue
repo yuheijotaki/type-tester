@@ -3,6 +3,7 @@
     <p class="tools__label">font-size:</p>
     <div class="tools__block">
       <input
+        name="fontSizeRange"
         type="range"
         min="10"
         max="300"
@@ -12,6 +13,7 @@
         @blur="$emit('blur', $event)"
       >
       <input
+        name="fontSize"
         type="number"
         min="10"
         max="300"

@@ -3,6 +3,7 @@
     <p class="tools__label">color:</p>
     <div class="tools__block">
       <input
+        name="colorPalette"
         type="color"
         v-model="color"
         @input="updateValue"
@@ -10,6 +11,7 @@
         @blur="$emit('blur', $event)"
       >
       <input
+        name="color"
         type="text"
         v-model="color"
         @input="updateValue"

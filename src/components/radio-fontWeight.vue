@@ -3,6 +3,7 @@
     <p class="tools__label">font-weight:</p>
     <div class="tools__block">
       <input
+        name="fontWeight"
         type="radio"
         id="fontWeight01"
         value="normal"
@@ -11,6 +12,7 @@
       >
       <label for="fontWeight01">normal</label>
       <input
+        name="fontWeight"
         type="radio"
         id="fontWeight02"
         value="bold"

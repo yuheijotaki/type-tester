@@ -3,6 +3,7 @@
     <p class="tools__label">padding-left/padding-right:</p>
     <div class="tools__block">
       <input
+        name="paddingHorizontalRange"
         type="range"
         min="0"
         max="200"
@@ -12,6 +13,7 @@
         @blur="$emit('blur', $event)"
       >
       <input
+        name="paddingHorizontal"
         type="number"
         min="0"
         max="200"

@@ -3,6 +3,7 @@
     <p class="tools__label">font-feature-settings:</p>
     <div class="tools__block">
       <input
+        name="fontFeatureSettings"
         type="radio"
         id="fontFeatureSettings01"
         value="normal"
@@ -11,6 +12,7 @@
       >
       <label for="fontFeatureSettings01">normal</label>
       <input
+        name="fontFeatureSettings"
         type="radio"
         id="fontFeatureSettings02"
         value="palt"
@@ -19,6 +21,7 @@
       >
       <label for="fontFeatureSettings02">palt</label>
       <input
+        name="fontFeatureSettings"
         type="radio"
         id="fontFeatureSettings03"
         value="pwid"
@@ -27,6 +30,7 @@
       >
       <label for="fontFeatureSettings03">pwid</label>
       <input
+        name="fontFeatureSettings"
         type="radio"
         id="fontFeatureSettings04"
         value="pkna"

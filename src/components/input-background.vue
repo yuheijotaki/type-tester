@@ -3,6 +3,7 @@
     <p class="tools__label">background-color:</p>
     <div class="tools__block">
       <input
+        name="backgroundPalette"
         type="color"
         v-model="background"
         @input="updateValue"
@@ -10,6 +11,7 @@
         @blur="$emit('blur', $event)"
       >
       <input
+        name="background"
         type="text"
         v-model="background"
         @input="updateValue"

@@ -3,6 +3,7 @@
     <p class="tools__label">line-height:</p>
     <div class="tools__block">
       <input
+        name="lineHeightRange"
         type="range"
         min="1"
         max="3"
@@ -13,6 +14,7 @@
         @blur="$emit('blur', $event)"
       >
       <input
+        name="lineHeight"
         type="number"
         min="1"
         max="3"
