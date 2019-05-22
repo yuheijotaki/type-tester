@@ -104,7 +104,8 @@ export default {
         'font-feature-settings': 'normal',
         '-webkit-font-smoothing': 'subpixel-antialiased'
       },
-      displayCss: false
+      displayCss: false,
+      metaTitle: 'site title'
     }
   },
   methods: {
@@ -230,7 +231,7 @@ export default {
   head: {
     title: function () {
       return {
-        inner: `タイトルです。`
+        inner: this.metaTitle
       }
     },
     meta: [
