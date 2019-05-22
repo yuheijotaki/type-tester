@@ -6,15 +6,11 @@ import VueHead from 'vue-head'
 
 Vue.config.productionTip = false
 
+Vue.use(VueHead)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   components: { App },
   template: '<App/>'
 })
-
-// ↓ 追記
-Vue.use(VueHead, {
-  separator: ' | '
-})
-// ↑ 追記
