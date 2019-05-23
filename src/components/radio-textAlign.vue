@@ -3,6 +3,7 @@
     <p class="tools__label">textAlign:</p>
     <div class="tools__block">
       <input
+        name="textAlign"
         type="radio"
         id="textAlign01"
         value="left"
@@ -11,6 +12,7 @@
       >
       <label for="textAlign01">left</label>
       <input
+        name="textAlign"
         type="radio"
         id="textAlign02"
         value="center"
@@ -19,6 +21,7 @@
       >
       <label for="textAlign02">center</label>
       <input
+        name="textAlign"
         type="radio"
         id="textAlign03"
         value="right"
@@ -27,6 +30,7 @@
       >
       <label for="textAlign03">right</label>
       <input
+        name="textAlign"
         type="radio"
         id="textAlign04"
         value="justify"

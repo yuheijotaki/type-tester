@@ -30,10 +30,10 @@
       </div>
       <ul class="toggle">
         <li class="toggle__button">
-          <a class="toggle__anchor" href="javascript:void(0);" v-on:click="toggleTools">Tools toggle button</a>
+          <a class="toggle__anchor" href="javascript:void(0);" v-on:click="toggleTools">Tools toggle</a>
         </li>
         <li class="toggle__button">
-          <a class="toggle__anchor" href="javascript:void(0);" v-on:click="toggleCss">CSS toggle button</a>
+          <a class="toggle__anchor" href="javascript:void(0);" v-on:click="toggleCss">CSS toggle</a>
         </li>
       </ul>
     </div>
@@ -149,15 +149,14 @@ export default {
       // line-height
       document.tools.lineHeightRange.value = this.styleObject['line-height'];
       document.tools.lineHeight.value = this.styleObject['line-height'];
-      // line-height
-      document.tools.lineHeightRange.value = this.styleObject['line-height'];
-      document.tools.lineHeight.value = this.styleObject['line-height'];
       // letter-spacing
       const local_letterSpacing = this.styleObject['letter-spacing'].replace('em','');
       document.tools.letterSpacingRange.value = local_letterSpacing;
       document.tools.letterSpacing.value = local_letterSpacing;
       // font-weight
       document.tools.fontWeight.value = this.styleObject['font-weight'];
+      // text-align
+      document.tools.textAlign.value = this.styleObject['text-align'];
       // -webkit-font-smoothing
       document.tools.fontSmoothing.value = this.styleObject['-webkit-font-smoothing'];
       // padding-top / padding-bottom
@@ -356,6 +355,12 @@ export default {
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap');
+@mixin fontCode {
+  font-family: 'Source Code Pro', monospace;
+  font-weight: 400;
+}
+
 html,* {
   margin: 0;
   padding: 0;
@@ -380,12 +385,13 @@ h1,h2,h3,h4,h5,h6 {
 // tools
 .tools {
   box-sizing: border-box;
-  background: #eee;
-  width: 40%;
+  background: $lightGray;
+  width: 400px;
   min-height: 100vh;
   padding: 20px;
-  font-size: 12px;
-  line-height: 1.2;
+  font-size: 11px;
+  line-height: 1.1;
+  @include fontCode;
   @include fontSmooth;
   &.js-tools-active {
     display: none;
@@ -398,36 +404,51 @@ h1,h2,h3,h4,h5,h6 {
   }
 }
 .tools__block {
-  margin-top: 5px;
+  margin-top: 7px;
   display: flex;
+  flex-wrap: wrap;
   input[type="text"],
   input[type="number"],
   input[type="color"],
   input[type="range"],
   label {
-    margin-right: 5px;
+    margin-right: 10px;
+    letter-spacing: -0.025em;
   }
   input[type="radio"] {
-    margin-right: 2px;
+    margin-right: 4px;
   }
   textarea {
+    @include fontJa;
     width: 100%;
     max-width: 100%;
-    height: 100px;
+    height: 120px;
     line-height: 1.4;
-    padding: 5px;
+    padding: 8px;
+    letter-spacing: .05em;
+  }
+}
+.tools__radio {
+  margin-bottom: 5px;
+  display: flex;
+  &:nth-last-child(1),
+  &:nth-last-child(2) {
+    margin-bottom: 0;
   }
 }
 .tools__label {
-  background: #666;
-  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  background: $gray;
+  color: $white;
   padding: 3px 6px;
+  border-radius: 2px;
 }
 
 // container
 .container {
   box-sizing: border-box;
-  width: 60%;
+  width: calc(100% - 400px);
   min-height: 100vh;
   &.js-tools-active {
     width: 100%;
@@ -438,11 +459,12 @@ h1,h2,h3,h4,h5,h6 {
 .css {
   @include fontSmooth;
   pre {
-    background: #262a34;
+    @include fontCode;
+    background: $codeBg;
     padding: 20px;
-    color: #b8bdc7;
-    font-size: 14px;
-    line-height: 1.4;
+    color: $codeColor;
+    font-size: 12px;
+    line-height: 1.5;
   }
 }
 
@@ -458,11 +480,12 @@ h1,h2,h3,h4,h5,h6 {
   right: 20px;
   display: flex;
   list-style: none;
+  @include fontCode;
   @include fontSmooth;
 }
 .toggle__button {
   margin-right: 10px;
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1;
   &:last-child {
     margin-right: 0;
@@ -470,10 +493,15 @@ h1,h2,h3,h4,h5,h6 {
 }
 .toggle__anchor {
   display: block;
-  padding: 4px 6px;
-  background: #fff;
-  border: #000 1px solid;
-  color: #000;
+  padding: 4px 8px;
+  background: $white;
+  border: $black 1px solid;
+  color: $black;
   text-decoration: none;
+  border-radius: 2px;
+  letter-spacing: -0.01em;
+  &:hover {
+    background: $lightGray;
+  }
 }
 </style>

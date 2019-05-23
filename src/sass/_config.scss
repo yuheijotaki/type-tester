@@ -3,14 +3,37 @@
 *****************************/
 
 // color
-$black: #000;
+$black: #222;
 $white: #fff;
+$gray: #444;
+$lightGray: #eee;
+$codeColor: #b8bdc7;
+$codeBg: #262a34;
 
 // easing
 $easeInQuad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
 $easeOutQuad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 $easeInExpo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
 $easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
+
+
+
+/****************************
+  mixin
+*****************************/
+// font smooth
+@mixin fontSmooth {
+  letter-spacing: .02em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings : "palt";
+}
+
+@mixin fontJa {
+  font-family: Helvetica Neue, Helvetica, Arial, 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+  font-weight: normal;
+}
 
 
 
@@ -31,8 +54,7 @@ $breakpoints: (
   }
 }
 
-// 使い方の例
-// @include mq() {}
+/****************************
 .foo {
   color: blue;
   @include mq() { // 引数を省略（初期値はmdの768px）
@@ -42,12 +64,4 @@ $breakpoints: (
     color: red;
   }
 }
-
-// font smooth
-@mixin fontSmooth {
-  letter-spacing: .02em;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  font-feature-settings : "palt";
-}
+*****************************/
